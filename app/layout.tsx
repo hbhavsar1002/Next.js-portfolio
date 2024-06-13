@@ -1,7 +1,10 @@
+//useing react context api to send the active section details from header components to other components. 
+//here we can see that in this file we have header component and then children which are present in page file which holds other important components which should interact based on the active section. 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import ActiveSectionContext from "@/context/activeSectionContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="!scroll-smooth">
       <body className={`${inter.className} bg-gray-50
       text-gray-950 relative h-[5000px] pt-28 sm:pt-36`}>
         <div
@@ -28,8 +31,11 @@ export default function RootLayout({
         w-[50rem] -z-10 rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem]
         lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"
         ></div>
-        <Header />
-        {children}
+        <ActiveSectionContext>
+          <Header />
+          {children}
+        </ActiveSectionContext>
+        
       </body>
     </html>
   );
