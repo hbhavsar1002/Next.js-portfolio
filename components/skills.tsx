@@ -23,7 +23,7 @@ const fadeInAnimation = {
 export default function Skills() {
   const { ref } = useSectionInView("Skills", 0.75);
   return (
-    <section
+    <section id="skills"
       ref={ref}
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
     >
@@ -32,7 +32,7 @@ export default function Skills() {
         {skillsData.map((skill, index) => (
           <motion.li
             key={index}
-            className="bg-white border border-black/[0.1] rounded-xl px-5 py-3"
+            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
             variants={fadeInAnimation}
             initial="initial"
             //whileInView because we want to see the animation only when we in this section and not when we reload the page
